@@ -56,7 +56,9 @@ After the apps running is succesfully, we can start by calling routes. For examp
 | /drv/allorders/:driversId         | GET    | Displays all orders that have been processed by driver  |
 | /drv/pickup/:ordersId             | PUT    | Used for drivers who want to take the order, or update the order status  |
 
-* #### Customer's Register
+#### Authentication
+
+* ##### Customer's Register
 
     * Access endpoint : /api/auth/user/register 
     * Method     : POST
@@ -72,7 +74,7 @@ After the apps running is succesfully, we can start by calling routes. For examp
     * Example success response :
     ![Alt text](./src/assets/img/2-1-custreg.png "Calling '/register' route")
 
-* #### Customer's Login
+* ##### Customer's Login
 
     * Access URL : /api/auth/user/login 
     * Method     : POST
@@ -89,7 +91,7 @@ After the apps running is succesfully, we can start by calling routes. For examp
     * Example password incorrect response :
         ![Alt text](./src/assets/img/2-3-custlog.png "Calling '/login' route")
 
-* #### Driver's Register
+* ##### Driver's Register
 
     * Access URL : /api/auth/driver/register
     * Method     : POST
@@ -105,7 +107,7 @@ After the apps running is succesfully, we can start by calling routes. For examp
     * Example success response :
         ![Alt text](./src/assets/img/2-1-drvreg.png "Calling '/register' route")
 
-* #### Driver's Login
+* ##### Driver's Login
 
     * Access URL : /api/auth/driver/login 
     * Method     : POST
