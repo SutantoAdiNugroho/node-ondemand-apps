@@ -4,7 +4,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.status(200).json({
     status: 200,
-    message: "Welcome to coinmarketcap api",
+    message: "Welcome to on-demand apps api",
   });
 });
 
