@@ -17,7 +17,6 @@ module.exports = {
       const userCheckEmail = await UserModel.findOne({ email: req.body.email });
 
       if (userCheckEmail) {
-        objErr = clearObjErr(objErr);
         objErr.status = 400;
         objErr.message = `User with email ${req.body.email} already used, please register with another email`;
         return handleError(req, res, objErr);
@@ -40,7 +39,6 @@ module.exports = {
     } catch (error) {
       console.error("Error occured with message :", error);
 
-      objErr = clearObjErr(objErr);
       objErr.status = 500;
       objErr.message = error.message;
       return handleError(req, res, objErr);
@@ -57,7 +55,6 @@ module.exports = {
       });
 
       if (userCheckEmail) {
-        objErr = clearObjErr(objErr);
         objErr.status = 400;
         objErr.message = `Driver with email ${req.body.email} already used, please register with another email`;
         return handleError(req, res, objErr);
@@ -80,7 +77,6 @@ module.exports = {
     } catch (error) {
       console.error("Error occured with message :", error);
 
-      objErr = clearObjErr(objErr);
       objErr.status = 500;
       objErr.message = error.message;
       return handleError(req, res, objErr);
@@ -92,7 +88,6 @@ module.exports = {
         email: req.body.email,
       }).then(async (user) => {
         if (!user) {
-          objErr = clearObjErr(objErr);
           objErr.status = 404;
           objErr.message = `User with email ${req.body.email} not found`;
           return handleError(req, res, objErr);
@@ -104,7 +99,6 @@ module.exports = {
         );
 
         if (!comparePass) {
-          objErr = clearObjErr(objErr);
           objErr.status = 401;
           objErr.message = "The password that entered was incorrect";
           return handleError(req, res, objErr);
@@ -122,7 +116,6 @@ module.exports = {
     } catch (error) {
       console.error("Error occured with message :", error);
 
-      objErr = clearObjErr(objErr);
       objErr.status = 500;
       objErr.message = error.message;
       return handleError(req, res, objErr);
@@ -134,7 +127,6 @@ module.exports = {
         email: req.body.email,
       }).then(async (user) => {
         if (!user) {
-          objErr = clearObjErr(objErr);
           objErr.status = 404;
           objErr.message = `Driver with email ${req.body.email} not found`;
           return handleError(req, res, objErr);
@@ -146,7 +138,6 @@ module.exports = {
         );
 
         if (!comparePass) {
-          objErr = clearObjErr(objErr);
           objErr.status = 401;
           objErr.message = "The password that entered was incorrect";
           return handleError(req, res, objErr);
@@ -164,7 +155,6 @@ module.exports = {
     } catch (error) {
       console.error("Error occured with message :", error);
 
-      objErr = clearObjErr(objErr);
       objErr.status = 500;
       objErr.message = error.message;
       return handleError(req, res, objErr);
@@ -184,10 +174,4 @@ const handleError = (req, res, objErr) => {
       path: req.originalUrl,
     })
     .end();
-};
-
-const clearObjErr = (objErr) => {
-  for (var member in objErr) delete objErr[member];
-
-  return objErr;
 };

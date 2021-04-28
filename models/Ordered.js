@@ -42,11 +42,13 @@ const usersAcctSchema = new Schema({
   },
   makerOrderId: {
     type: Schema.Types.ObjectId,
+    ref: "users_accts",
     required: true,
   },
   pickupOrderId: {
     type: Schema.Types.ObjectId,
-    required: true,
+    ref: "drivers_accts",
+    default: null,
   },
   orderSts: {
     type: String,
@@ -58,6 +60,11 @@ const usersAcctSchema = new Schema({
       objOrderSts.delayed,
       objOrderSts.finished,
     ],
+    default: objOrderSts.request,
+  },
+  remark: {
+    type: String,
+    default: "",
   },
   created_at: {
     type: Date,
