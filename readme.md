@@ -36,6 +36,7 @@ After the apps running is succesfully, we can start by calling routes. For examp
 ![Alt text](./src/assets/img/1-1-start.png "Calling '/' route")
 
 ### API Guide And Documentation :
+
 #### /api/auth
 
 | Path             | Method | Description                           |
@@ -44,3 +45,13 @@ After the apps running is succesfully, we can start by calling routes. For examp
 | /user/register   | POST   | Costumers register                    |
 | /driver/login    | POST   | Drivers login, and return the token   |
 | /driver/register | POST   | Drivers register                      |
+
+#### /api/order
+
+| Path                              | Method | Description                                             |
+| ---                               | -----  | ----                                                    |
+| /cust/allorders/:customersId      | GET    | Showing all orders made by customerId                   |
+| /cust/makerequest                 | POST   | This is used if the customer makes an order             |
+| /drv/neworders                    | GET    | Displays all the orders recently made by the customer   |
+| /drv/allorders/:driversId         | GET    | Displays all orders that have been processed by driver  |
+| /drv/pickup/:ordersId             | PUT    | Used for drivers who want to take the order, or update the order status  |
