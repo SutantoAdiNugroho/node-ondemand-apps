@@ -66,6 +66,59 @@ After the apps running is succesfully, we can start by calling routes. For examp
         | ---      | -----    | ----              |
         | name     | string   | Name of customer  |
         | email    | string   | Email of customer |
-        | password | string   | Password of user  |
+        | password | string   | Password of customer  |
+        | phoneNumber | number   | Phone number of customer  |
         
     * Example success response :
+    ![Alt text](./src/assets/img/2-1-custreg.png "Calling '/register' route")
+
+* #### Customer's Login
+
+    * Access URL : /api/auth/user/login 
+    * Method     : POST
+    * Parameters :
+    
+        | Name     | Type     | Description                                   |
+        | ---      | -----    | ----                                          |
+        | email    | string   | Email of customer                                 |
+        | password | string   | Password of customer                              |
+        
+    * Example success response :
+        ![Alt text](./src/assets/img/2-2-custlog.png "Calling '/login' route")
+
+    * Example password incorrect response :
+        ![Alt text](./src/assets/img/2-3-custlog.png "Calling '/login' route")
+
+* #### Driver's Register
+
+    * Access URL : /api/auth/driver/register
+    * Method     : POST
+    * Parameters :
+    
+        | Name        | Type     | Description       |
+        | ---         | -----    | ----              |
+        | name        | string   | Name of driver  |
+        | email       | string   | Email of driver |
+        | password    | string   | Password of driver  |
+        | phoneNumber | number   | Phone number of driver  |
+        
+    * Example success response :
+        ![Alt text](./src/assets/img/2-1-drvreg.png "Calling '/register' route")
+
+* #### Driver's Login
+
+    * Access URL : /api/auth/driver/login 
+    * Method     : POST
+    * Parameters :
+    
+        | Name     | Type     | Description                                   |
+        | ---      | -----    | ----                                          |
+        | email    | string   | Email of driver                                 |
+        | password | string   | Password of driver                              |
+        
+    * Example success response :
+        ![Alt text](./src/assets/img/2-1-drvlog.png "Calling '/login' route")
+
+    * Example password incorrect response :
+        ![Alt text](./src/assets/img/2-2-drvlog.png "Calling '/login' route")
+
