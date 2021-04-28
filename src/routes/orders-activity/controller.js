@@ -64,11 +64,34 @@ module.exports = {
         orderSts: objOrderSts.request,
       })
         .populate("makerOrderId", "_id name phoneNumber")
-        .populate("pickupOrderId", "_id name phoneNumber");
+        .populate("pickupOrderId", "_id name phoneNumber")
+        .sort({ created_at: -1 });
 
       res.status(200).json({
         status: 200,
         message: "Succesfully display all new orders",
+        data: resultOrder,
+      });
+    } catch (error) {
+      console.error("Error occured with message :", error);
+
+      objErr.status = 500;
+      objErr.message = error.message;
+      return handleError(req, res, objErr);
+    }
+  },
+  drvGetAllMyOrders: async (req, res) => {
+    try {
+      const resultOrder = await OrderedModel.find({
+        pickupOrderId: objectId(req.params.id),
+      })
+        .populate("makerOrderId", "_id name phoneNumber")
+        .populate("pickupOrderId", "_id name phoneNumber")
+        .sort({ created_at: -1 });
+
+      res.status(200).json({
+        status: 200,
+        message: `Succesfully show all orders with drivers id ${req.params.id}`,
         data: resultOrder,
       });
     } catch (error) {
@@ -93,8 +116,38 @@ module.exports = {
         { runValidators: true }
       );
 
+      const resultFindOrder = await OrderedModel.find({
+        _id: req.params.id,
+      })
+        .populate("makerOrderId", "_id name phoneNumber")
+        .populate("pickupOrderId", "_id name phoneNumber")
+        .select("-orderedLocation -orderedDestination");
+
       res.status(200).json({
         message: `Order data succesfully update with id ${req.params.id}`,
+        data: resultFindOrder,
+      });
+    } catch (error) {
+      console.error("Error occured with message :", error);
+
+      objErr.status = 500;
+      objErr.message = error.message;
+      return handleError(req, res, objErr);
+    }
+  },
+
+  //Entire role can use the
+  getOneMyOrders: async (req, res) => {
+    try {
+      const resultOrder = await OrderedModel.findOne({
+        _id: objectId(req.params.id),
+      })
+        .populate("makerOrderId", "_id name phoneNumber")
+        .populate("pickupOrderId", "_id name phoneNumber");
+
+      res.status(200).json({
+        status: 200,
+        message: `Succesfully show order data with order id ${req.params.id}`,
         data: resultOrder,
       });
     } catch (error) {
