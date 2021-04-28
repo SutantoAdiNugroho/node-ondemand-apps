@@ -56,11 +56,23 @@ After the apps running is succesfully, we can start by calling routes. For examp
 | /drv/allorders/:driversId         | GET    | Displays all orders that have been processed by driver  |
 | /drv/pickup/:ordersId             | PUT    | Used for drivers who want to take the order, or update the order status  |
 
+#### Status code of the order
+
+```javascript
+{
+  request: "00",
+  beingPickedUp: "01",
+  delivering: "02",
+  delayed: "03",
+  finished: "90",
+}
+```
+
 #### 1. Authentication
 
 * ##### Customer's Register
 
-    * Access endpoint : /api/auth/user/register 
+    * Access URL : /api/auth/user/register 
     * Method     : POST
     * Parameters :
     
