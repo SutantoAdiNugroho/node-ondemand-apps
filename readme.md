@@ -55,3 +55,17 @@ After the apps running is succesfully, we can start by calling routes. For examp
 | /drv/neworders                    | GET    | Displays all the orders recently made by the customer   |
 | /drv/allorders/:driversId         | GET    | Displays all orders that have been processed by driver  |
 | /drv/pickup/:ordersId             | PUT    | Used for drivers who want to take the order, or update the order status  |
+
+* #### Customer's Register
+
+    * Access endpoint : /api/auth/user/register 
+    * Method     : POST
+    * Parameters :
+    
+        | Name     | Type     | Description       |
+        | ---      | -----    | ----              |
+        | name     | string   | Name of customer  |
+        | email    | string   | Email of customer |
+        | password | string   | Password of user  |
+        
+    * Example success response :
