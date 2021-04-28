@@ -56,7 +56,7 @@ After the apps running is succesfully, we can start by calling routes. For examp
 | /drv/allorders/:driversId         | GET    | Displays all orders that have been processed by driver  |
 | /drv/pickup/:ordersId             | PUT    | Used for drivers who want to take the order, or update the order status  |
 
-#### Authentication
+#### 1. Authentication
 
 * ##### Customer's Register
 
@@ -124,3 +124,70 @@ After the apps running is succesfully, we can start by calling routes. For examp
     * Example password incorrect response :
         ![Alt text](./src/assets/img/2-2-drvlog.png "Calling '/login' route")
 
+
+#### 2. Customer's Orders
+* ##### Create orders
+
+    * Access URL : /api/order/cust/makerequest
+    * Method     : POST
+    * Additional : Token of customer is needed when execute this endpoint
+    * Parameters :
+    
+        | Name                        | Type       | Description                                   |
+        | ---                         | -----      | ----                                          |
+        | makerOrderId                | objectId   | ID of the customer                            |
+        | orderedType                 | string     | Type of order, at least one "ride" or "food" is required for this field |
+        | orderedLocation.latitude    | decimal    | Location latitude from order start |
+        | orderedLocation.longitude   | decimal    | Location longitude from order start |
+        | orderedDestination.latitude | decimal    | Location latitude from order destination |
+        | orderedDestination.longitude | decimal    | Location longitude from order destination |
+        | remark                      | string    | Order remark from customer |
+        
+    * Example success response :
+        ![Alt text](./src/assets/img/2-1-custmkor.png "Calling '/login' route")
+
+* ##### Show orders by customer id
+
+    * Access URL : /api/order/cust/allorders/:customersId
+    * Method     : GET
+    * Additional : Token of customer is needed when execute this endpoint
+    * Example success response :
+        ![Alt text](./src/assets/img/2-2-custords.png "Calling '/login' route")
+
+    * Example failed response without token :
+        ![Alt text](./src/assets/img/2-4-custords.png "Calling '/login' route")
+
+* ##### Show just one order
+
+    * Access URL : /api/order/cd/oneorder/:orderId
+    * Method     : GET
+    * Additional : Token of customer or driver is needed when execute this endpoint
+    * Example success response :
+        ![Alt text](./src/assets/img/2-1-custoneor.png "Calling '/login' route")
+
+    * Example failed response without token :
+        ![Alt text](./src/assets/img/2-5-custords.png "Calling '/login' route")
+
+#### 3. Driver's Orders
+* ##### Pickup or modify orders status
+
+    * Access URL : /api/order/drv/pickup/:orderId
+    * Method     : PUT
+    * Additional : Token of customer is needed when execute this endpoint
+    * Parameters :
+    
+        | Name                        | Type       | Description                                   |
+        | ---                         | -----      | ----                                          |
+        | driverId                    | objectId   | ID of the driver                              |
+        | orderSts                    | string     | Status of order that will be change           |
+        
+    * Example success response :
+        ![Alt text](./src/assets/img/2-1-drvpick.png "Calling '/login' route")
+
+* ##### Showing all new orders
+
+    * Access URL : /api/order/drv/neworders
+    * Method     : GET
+    * Additional : Token of driver is needed when execute this endpoint
+    * Example success response :
+        ![Alt text](./src/assets/img/2-1-drvnwor.png "Calling '/login' route")
