@@ -16,7 +16,7 @@ app.use("/api/order", require("./src/routes/orders-activity"));
 app.use("*", require("./src/routes/404-notfound"));
 
 if (connectDB) {
-  app.listen(PORT, () => {
+  module.exports = app.listen(PORT, () => {
     console.log(`This app running on port ${PORT}`);
   });
 }
