@@ -1,10 +1,11 @@
 const connection = require("./connection");
 const { HOST_DB, PORT, JWT_SECRET_KEY, NODE_ENV } = require("./environment");
 
-const dotenv = require("dotenv");
-const envFound = dotenv.config();
-
+console.log(NODE_ENV);
 if (NODE_ENV === "development") {
+  const dotenv = require("dotenv");
+  const envFound = dotenv.config();
+
   if (envFound.error) {
     throw new Error("Couldn't find .env file  ⚠️");
   }
